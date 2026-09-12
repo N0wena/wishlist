@@ -1,0 +1,75 @@
+[
+  {
+    "id": "navigator15",
+    "title": "Nomatic Navigator 15L",
+    "subtitle": "Рюкзак",
+    "note": "Рюкзак это та вещь, которая вросла в меня и хочется иметь, какой-то нереально ахуенный рюкзак, который будет эргономиным и понтовым. Давно засматриваюсь на Nomatic",
+    "price": "6000 THB",
+    "url": "https://s.lazada.co.th/s.Zjhgkk?c=r",
+    "image": "/lots/navigator15.jpeg",
+    "imagePos": "50% 45%",
+    "weight": 3
+  },
+  {
+    "id": "raycast",
+    "title": "The Raycast Keyboard",
+    "subtitle": "Клавиатура",
+    "note": "Коллаба Raycast и NuPhy: низкий профиль, 75%, энкодер и отдельная клавиша Hyper под сочетания. Хочу её ровно за это — за Hyper, на который вешается всё, и за то, что она плоская и её не жалко возить с собой.",
+    "price": "149$",
+    "url": "https://www.raycast.com/keyboard",
+    "image": "/lots/raycast.png",
+    "imagePos": "50% 50%",
+    "weight": 2
+  },
+  {
+    "id": "boker",
+    "title": "Складной нож",
+    "subtitle": "Нож",
+    "note": "Я много перемещаюсь и часто натыкаюсь на ситуации, когда нож был бы полезен. Хочу складной нож, который не стыдно достать в общественном месте.",
+    "price": "$$$",
+    "url": "#",
+    "image": "/lots/boker.jpeg",
+    "imagePos": "50% 50%",
+    "weight": 1
+  },
+  {
+    "id": "hipdac",
+    "title": "Подарок ещё придумывается",
+    "subtitle": "Заглушка · место свободно",
+    "note": "Здесь будет ещё одно желание — пока не придумал.",
+    "image": "/lots/hipdac.jpeg",
+    "imagePos": "50% 45%",
+    "pending": true,
+    "weight": 1
+  },
+  {
+    "id": "anker",
+    "title": "Подарок ещё придумывается",
+    "subtitle": "Заглушка · место свободно",
+    "note": "Здесь будет ещё одно желание — пока не придумал.",
+    "image": "/lots/anker.jpeg",
+    "imagePos": "50% 50%",
+    "pending": true,
+    "weight": 1
+  },
+  {
+    "id": "kobo",
+    "title": "Подарок ещё придумывается",
+    "subtitle": "Заглушка · место свободно",
+    "note": "Здесь будет ещё одно желание — пока не придумал.",
+    "image": "/lots/kobo.jpeg",
+    "imagePos": "60% 45%",
+    "pending": true,
+    "weight": 1
+  },
+  {
+    "id": "mxmaster",
+    "title": "Подарок ещё придумывается",
+    "subtitle": "Заглушка · место свободно",
+    "note": "Здесь будет ещё одно желание — пока не придумал.",
+    "image": "/lots/mxmaster.jpeg",
+    "imagePos": "45% 55%",
+    "pending": true,
+    "weight": 1
+  }
+]

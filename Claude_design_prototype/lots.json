@@ -1,0 +1,112 @@
+[
+  {
+    "id": "x100vi",
+    "title": "Fujifilm X100VI",
+    "subtitle": "Камера · ориентир 165 000 ₽",
+    "note": "Хочу камеру, которую беру не «на съёмку», а просто с собой. Эта лежит в кармане куртки и не заставляет думать о настройках.",
+    "price": 165000,
+    "url": "https://www.fujifilm.com/",
+    "image": "lots/x100vi.jpeg",
+    "imagePos": "55% 40%",
+    "weight": 3
+  },
+  {
+    "id": "osmo",
+    "title": "DJI Osmo Pocket 3",
+    "subtitle": "Видео · ориентир 62 000 ₽",
+    "note": "Снимаю на телефон и каждый раз злюсь на тряску. Хочу писать дорогу и кухню одной рукой, без штатива и без монтажа.",
+    "price": 62000,
+    "url": "https://www.dji.com/",
+    "image": "lots/osmo.jpeg",
+    "imagePos": "50% 35%",
+    "weight": 3
+  },
+  {
+    "id": "hd660",
+    "title": "Sennheiser HD 660S2",
+    "subtitle": "Наушники · ориентир 42 000 ₽",
+    "note": "Мои старые открытые наушники доживают третий год и уже хрипят на низах. Слушаю в них почти каждый вечер.",
+    "price": 42000,
+    "url": "https://www.sennheiser-hearing.com/",
+    "image": "lots/hd660.jpeg",
+    "imagePos": "45% 50%",
+    "weight": 3
+  },
+  {
+    "id": "q1pro",
+    "title": "Keychron Q1 Pro",
+    "subtitle": "Клавиатура · ориентир 21 000 ₽",
+    "note": "Печатаю много и хочу, чтобы это было физически приятно. Алюминиевый корпус, тихие свитчи, без подсветки-дискотеки.",
+    "price": 21000,
+    "url": "https://www.keychron.com/",
+    "image": "lots/q1pro.jpeg",
+    "imagePos": "50% 45%",
+    "weight": 2
+  },
+  {
+    "id": "streamdeck",
+    "title": "Elgato Stream Deck MK.2",
+    "subtitle": "Пульт · ориентир 24 000 ₽",
+    "note": "Пятнадцать кнопок, на которые я повешу всё, что делаю по десять раз в день. Давно хочу перестать искать это мышкой.",
+    "price": 24000,
+    "url": "https://www.elgato.com/",
+    "image": "lots/streamdeck.jpeg",
+    "imagePos": "50% 50%",
+    "weight": 2
+  },
+  {
+    "id": "screenbar",
+    "title": "BenQ ScreenBar Halo",
+    "subtitle": "Свет · ориентир 17 000 ₽",
+    "note": "Работаю вечерами при одной лампе сбоку и к ночи щурюсь. Этот светит на стол, а не в монитор.",
+    "price": 17000,
+    "url": "https://www.benq.com/",
+    "image": "lots/screenbar.jpeg",
+    "imagePos": "50% 55%",
+    "weight": 2
+  },
+  {
+    "id": "hipdac",
+    "title": "iFi hip-dac 3",
+    "subtitle": "ЦАП · ориентир 22 000 ₽",
+    "note": "Маленькая коробочка, после которой ноутбук наконец начинает звучать. Беру с собой в поездки.",
+    "price": 22000,
+    "url": "https://ifi-audio.com/",
+    "image": "lots/hipdac.jpeg",
+    "imagePos": "50% 45%",
+    "weight": 1
+  },
+  {
+    "id": "anker",
+    "title": "Anker Prime 27650",
+    "subtitle": "Павербанк · ориентир 18 000 ₽",
+    "note": "Заряжает ноутбук, а не только телефон. Нужен, потому что я вечно работаю там, где нет розетки.",
+    "price": 18000,
+    "url": "https://www.anker.com/",
+    "image": "lots/anker.jpeg",
+    "imagePos": "50% 50%",
+    "weight": 1
+  },
+  {
+    "id": "kobo",
+    "title": "Kobo Libra Colour",
+    "subtitle": "Читалка · ориентир 28 000 ₽",
+    "note": "Читаю с телефона и половину не дочитываю. Хочу экран, с которого невозможно уйти в мессенджеры.",
+    "price": 28000,
+    "url": "https://ru.kobobooks.com/",
+    "image": "lots/kobo.jpeg",
+    "imagePos": "60% 45%",
+    "weight": 2
+  },
+  {
+    "id": "mxmaster",
+    "title": "Logitech MX Master 3S",
+    "subtitle": "Мышь · ориентир 12 000 ₽",
+    "note": "Тихие клики и горизонтальное колесо. Ничего героического, просто хорошая рабочая мышь.",
+    "price": 12000,
+    "url": "https://www.logitech.com/",
+    "image": "lots/mxmaster.jpeg",
+    "imagePos": "45% 55%",
+    "weight": 1
+  }
+]

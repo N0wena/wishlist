@@ -1,0 +1,372 @@
+/* ChillBase Design System — Colors & Typography tokens
+ * Sources: Figma "ChillBase айдентика" + chillbase-pptx SKILL.md
+ * -------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------
+   FONTS — Onest is the ONLY self-hostable font in this system.
+   Good Headline Pro (Adobe Fonts) is the headline face but cannot be
+   redistributed. For hosted prototypes we substitute a heavy, wide
+   display face (Archivo with heavy weight + extra tracking is close);
+   see README for how to load the licensed family in production.
+------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Onest';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./fonts/Onest-Light.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Onest-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./fonts/Onest-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./fonts/Onest-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./fonts/Onest-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 900;
+  font-style: normal;
+  src: url('./fonts/Onest-Black.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------
+   OSWALD — display / headline face (self-hosted).
+   Headings use the heavy weights: SemiBold (600) and Bold (700).
+------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./fonts/Oswald-Light.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Oswald-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./fonts/Oswald-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./fonts/Oswald-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./fonts/Oswald-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  /* ============================================================
+     COLORS — primary palette
+     Three hero colors: Black, Red, White Smoke.
+     ============================================================ */
+  --cb-black:       #121212; /* primary background */
+  --cb-red:         #ff0000; /* primary accent — used for highlights */
+  --cb-white-smoke: #f4f5f0; /* primary text on dark, card bgs on light */
+  --cb-pure-white:  #ffffff;
+  --cb-pure-black:  #000000;
+
+  /* Neutral scale pulled from Figma usage counts */
+  --cb-ink-900: #121212;   /* surface */
+  --cb-ink-800: #1a1a1a;   /* card surface */
+  --cb-ink-700: #242424;   /* elevated card */
+  --cb-ink-600: #2f2f2f;   /* borders, grid lines */
+  --cb-ink-500: #353436;   /* dividers on light */
+  --cb-ink-400: #535252;
+  --cb-ink-300: #737373;
+  --cb-ink-200: #979797;
+  --cb-ink-100: #bfbfbf;
+  --cb-ink-050: #d9d9d9;
+  --cb-paper:   #f4f5f0;
+  --cb-white:   #f5f5f5;
+
+  /* ============================================================
+     ACCENT palette — used sparingly
+     ============================================================ */
+  --cb-orange:       #ff7e00; /* PRIMARY accent in restrained edition */
+  --cb-orange-hot:   #ff6716; /* bars/highlights */
+  --cb-orange-bright:#fe8c01;
+  --cb-red-signal:   #fe3101;
+  --cb-lime:         #cbec55; /* OneState / sticker accents */
+  --cb-violet:       #7b5aea; /* used rarely for "Imba"-style stickers */
+
+  /* ============================================================
+     GRADIENTS — signature brand fills
+     Hero fill = orange→hot→signal at 0% / 57% / 100% (brand spec).
+     ============================================================ */
+  --gradient-accent:
+    linear-gradient(92deg,
+      var(--cb-orange-bright) 0%,
+      var(--cb-orange-hot)    57%,
+      var(--cb-red-signal)    100%); /* @kind color */
+  --gradient-accent-h:
+    linear-gradient(90deg,
+      var(--cb-orange-bright) 0%,
+      var(--cb-orange-hot)    57%,
+      var(--cb-red-signal)    100%); /* @kind color */
+  --gradient-surface:
+    linear-gradient(135deg, #1b1b1b 0%, #151515 50%, #222 100%); /* @kind color */
+  --gradient-glow:
+    radial-gradient(ellipse at 18% 70%, rgba(255,0,0,0.35), transparent 45%),
+    radial-gradient(ellipse at 82% 28%, rgba(255,126,0,0.28), transparent 48%),
+    radial-gradient(ellipse at 50% 100%, rgba(123,90,234,0.18), transparent 55%); /* @kind color */
+  --gradient-photo-shade:
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.9) 100%); /* @kind color */
+  --gradient-vignette:
+    radial-gradient(circle at 50% 50%, #111 0%, #050505 100%); /* @kind color */
+
+  /* ============================================================
+     SEMANTIC TOKENS — dark mode (canonical ChillBase surface)
+     ============================================================ */
+  --bg:           var(--cb-ink-900);
+  --bg-elevated:  var(--cb-ink-800);
+  --bg-highlight: var(--cb-ink-700);
+  --surface:      var(--cb-ink-800);
+  --surface-hi:   var(--cb-ink-700);
+  --border:       var(--cb-ink-600);
+  --border-subtle:#242424;
+  --divider:      var(--cb-ink-600);
+
+  --fg:           var(--cb-white);         /* primary text */
+  --fg-muted:     var(--cb-ink-100);       /* secondary text */
+  --fg-dim:       #888888;                  /* tertiary / dates / footnotes */
+  --fg-inverse:   var(--cb-ink-900);
+
+  --accent:       var(--cb-red);           /* hero accent */
+  --accent-fg:    var(--cb-white-smoke);
+  --accent-2:     var(--cb-orange);        /* data / stats */
+  --warn:         var(--cb-orange-hot);
+  --pop:          var(--cb-lime);          /* rare — product launches */
+
+  /* Shadows — sparing, mostly used on light surfaces or for red glow */
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.35);
+  --shadow-md:    0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg:    0 20px 60px rgba(0,0,0,0.6);
+  --shadow-glow-red:    0 0 48px rgba(255,0,0,0.45);
+  --shadow-glow-orange: 0 0 48px rgba(255,126,0,0.35);
+
+  /* Radii — ChillBase uses moderate rounding (≈8px on cards). Pills are
+     used for tags; hard 0 corners for hero display blocks on posters. */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-pill: 999px;
+
+  /* Spacing — 4pt base grid */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ============================================================
+     TYPOGRAPHY
+     Display family: Good Headline Pro (Wide, Wide Bold, Black…)
+     Body family: Onest
+     Mono family: system
+     ============================================================ */
+  --font-display:
+    'Oswald', 'Helvetica Neue', Impact,
+    'Arial Narrow', system-ui, sans-serif;
+  --font-body:
+    'Onest', 'Inter', system-ui, -apple-system, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:
+    ui-monospace, 'SFMono-Regular', Menlo,
+    Consolas, monospace;
+
+  /* Display treatments — wide, bold, tracked, UPPERCASE */
+  --display-tracking:     0.03em;   /* Good Headline Pro baseline */
+  --display-tracking-wide:0.08em;   /* small caps / section numbers */
+
+  /* Type scale — desktop, 1920 reference */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  40px;
+  --text-5xl:  56px;
+  --text-6xl:  72px;
+  --text-7xl:  96px;
+  --text-display: 300px; /* hero poster ABC treatment */
+
+  --leading-tight:  1.05;
+  --leading-snug:   1.15;
+  --leading-normal: 1.35;
+  --leading-body:   1.5;
+
+  /* ============================================================
+     SEMANTIC TEXT STYLES — ready-to-apply combinations
+     ============================================================ */
+  --h1-family:  var(--font-display);
+  --h1-weight:  700;
+  --h1-size:    96px;
+  --h1-leading: 1.02;
+  --h1-tracking:0.02em;
+  --h1-transform:uppercase; /* @kind other */
+
+  --h2-family:  var(--font-display);
+  --h2-weight:  700;
+  --h2-size:    70px;
+  --h2-leading: 1.05;
+  --h2-tracking:0.03em;
+  --h2-transform:uppercase; /* @kind other */
+
+  --h3-family:  var(--font-display);
+  --h3-weight:  700;
+  --h3-size:    48px;
+  --h3-leading: 1.1;
+  --h3-tracking:0.03em;
+  --h3-transform:uppercase; /* @kind other */
+
+  --h4-family:  var(--font-display);
+  --h4-weight:  700;
+  --h4-size:    34px;
+  --h4-leading: 1.15;
+  --h4-tracking:0.03em;
+  --h4-transform:uppercase; /* @kind other */
+
+  --eyebrow-family: var(--font-display);
+  --eyebrow-weight: 500;
+  --eyebrow-size:   18px;
+  --eyebrow-tracking:0.12em;
+  --eyebrow-transform: uppercase; /* @kind other */
+
+  --body-family:  var(--font-body);
+  --body-weight:  400;
+  --body-size:    16px;
+  --body-leading: 1.5;
+
+  --lead-family:  var(--font-display); /* "manifesto" paragraphs in display */
+  --lead-weight:  400;
+  --lead-size:    26px;
+  --lead-leading: 1.19;
+  --lead-tracking:0.03em;
+
+  --caption-family: var(--font-body);
+  --caption-weight: 500;
+  --caption-size:   12px;
+  --caption-tracking:0.06em;
+  --caption-transform:uppercase; /* @kind other */
+
+  --code-family: var(--font-mono);
+  --code-size:   13px;
+}
+
+/* ============================================================
+   BASE ELEMENT STYLES
+   ============================================================ */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body-family);
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--h1-family); font-weight: var(--h1-weight);
+  font-size: var(--h1-size); line-height: var(--h1-leading);
+  letter-spacing: var(--h1-tracking); text-transform: var(--h1-transform);
+  margin: 0;
+}
+h2, .h2 {
+  font-family: var(--h2-family); font-weight: var(--h2-weight);
+  font-size: var(--h2-size); line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking); text-transform: var(--h2-transform);
+  margin: 0;
+}
+h3, .h3 {
+  font-family: var(--h3-family); font-weight: var(--h3-weight);
+  font-size: var(--h3-size); line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking); text-transform: var(--h3-transform);
+  margin: 0;
+}
+h4, .h4 {
+  font-family: var(--h4-family); font-weight: var(--h4-weight);
+  font-size: var(--h4-size); line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking); text-transform: var(--h4-transform);
+  margin: 0;
+}
+.eyebrow {
+  font-family: var(--eyebrow-family); font-weight: var(--eyebrow-weight);
+  font-size: var(--eyebrow-size); letter-spacing: var(--eyebrow-tracking);
+  text-transform: var(--eyebrow-transform); color: var(--fg);
+}
+.lead {
+  font-family: var(--lead-family); font-weight: var(--lead-weight);
+  font-size: var(--lead-size); line-height: var(--lead-leading);
+  letter-spacing: var(--lead-tracking);
+}
+p, .p {
+  font-family: var(--body-family); font-size: var(--body-size);
+  line-height: var(--body-leading); margin: 0 0 1em 0; color: var(--fg-muted);
+}
+small, .caption {
+  font-family: var(--caption-family); font-size: var(--caption-size);
+  font-weight: var(--caption-weight); letter-spacing: var(--caption-tracking);
+  text-transform: var(--caption-transform); color: var(--fg-dim);
+}
+code, kbd, .code {
+  font-family: var(--code-family); font-size: var(--code-size);
+}
+
+/* ============================================================
+   UTILITY — canonical backgrounds
+   ============================================================ */
+.cb-bg-grid    { background: var(--bg) url('./assets/backgrounds/bg-grid.png') center/cover no-repeat; }
+.cb-bg-dot     { background: var(--bg) url('./assets/backgrounds/bg-dot.png') center/cover no-repeat; }
+.cb-bg-blik    { background: var(--bg) url('./assets/backgrounds/bg-blik.png') center/cover no-repeat; }
+.cb-bg-bliki   { background: var(--bg) url('./assets/backgrounds/bg-bliki.png') center/cover no-repeat; }
+

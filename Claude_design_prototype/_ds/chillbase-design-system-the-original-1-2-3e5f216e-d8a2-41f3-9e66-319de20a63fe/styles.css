@@ -1,0 +1,17 @@
+/* ============================================================
+   CHILLBASE Design System — single entry point.
+   Consumers link this one file; it pulls in every global
+   stylesheet in dependency order.
+   (preview/_card.css is preview-only and is NOT imported here.)
+   ============================================================ */
+
+/* Base design tokens consumed by brand / deck / doc layers */
+@import url('./assets/tokens.css');
+
+/* Colors & typography tokens + base element styles (h1–h4, p, etc.) */
+@import url('./colors_and_type.css');
+
+/* Component / layout layers */
+@import url('./assets/brand.css');
+@import url('./assets/deck.css');
+@import url('./assets/doc.css');

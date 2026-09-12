@@ -1,0 +1,202 @@
+@import 'tailwindcss';
+
+/* ---- шрифты: локально, без внешних запросов на рендере ------------------ */
+@font-face {
+  font-family: 'Oswald';
+  src: url('/fonts/Oswald-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  src: url('/fonts/Oswald-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- дизайн-токены ------------------------------------------------------ */
+@theme {
+  --color-void: #121212;
+  --color-shelf: #171b21;
+  --color-stage: #0e1116;
+  --color-curtain: #0c0f13;
+  --color-deep: #2b5f8f;
+  --color-beacon: #8cc3f2;
+  --color-smoke: #f4f5f0;
+  --color-signal: #ff0000;
+
+  --color-line: #242424;
+  --color-edge: #2f2f2f;
+  --color-mute: #737373;
+  --color-dim: #979797;
+  --color-soft: #bfbfbf;
+
+  --font-display: 'Oswald', Impact, sans-serif;
+  --font-sans: 'Onest', system-ui, sans-serif;
+
+  /* Токены shadcn/ui — компоненты из реестра ссылаются на них по именам.
+     Значения взяты из палитры сцены. */
+  --color-background: #121212;
+  --color-foreground: #f4f5f0;
+  --color-primary: #f4f5f0;
+  --color-primary-foreground: #121212;
+  --color-secondary: #171b21;
+  --color-secondary-foreground: #f4f5f0;
+  --color-accent: #171b21;
+  --color-accent-foreground: #f4f5f0;
+  --color-destructive: #ff0000;
+  --color-destructive-foreground: #f4f5f0;
+  --color-border: #2f2f2f;
+  --color-input: #2f2f2f;
+  --color-ring: #8cc3f2;
+
+  --radius-plate: 8px;
+
+  --ease-wl: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --animate-wl-rise: wl-rise 800ms var(--ease-wl) both;
+  --animate-wl-cue: wl-cue 2.2s var(--ease-wl) infinite;
+  --animate-wl-fade: wl-rise 260ms var(--ease-wl) both;
+
+  @keyframes wl-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes wl-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes wl-spin-rev {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes wl-cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(7px);
+      opacity: 1;
+    }
+  }
+}
+
+/* ---- респонсив-переменные: меняются по media-query, поэтому вне @theme --- */
+:root {
+  --detail-cols: 1fr;
+  /* Плита стоит на translateZ(R), R считается от её ширины, поэтому передняя
+     плита ещё и увеличивается перспективой. Потолок в svh держит её в
+     пределах сцены: без него на невысоком окне обрезает верх и низ. */
+  --plate-w: min(clamp(200px, 60vw, 330px), 32svh);
+  --m5-cols: 1fr;
+  --m5-tracks: 2;
+  --m5-w: 86%;
+}
+
+@media (min-width: 761px) {
+  :root {
+    --plate-w: min(clamp(270px, 27vw, 388px), 32svh);
+  }
+}
+
+@media (min-width: 860px) {
+  :root {
+    --detail-cols: 0.9fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --m5-cols: 1.25fr 0.85fr;
+    --m5-tracks: 4;
+    --m5-w: 62%;
+  }
+}
+
+/* ---- база --------------------------------------------------------------- */
+/* @layer base обязателен: неслоёные правила перебивают Tailwind-утилиты,
+   и `text-void` на кнопке-ссылке проигрывает селектору `a`. */
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-void);
+  }
+
+  body {
+    overflow-x: hidden;
+    color: var(--color-smoke);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: var(--color-beacon);
+    text-decoration: none;
+    border-bottom: 1px solid rgb(140 195 242 / 0.35);
+    transition: color 200ms var(--ease-wl), border-color 200ms var(--ease-wl);
+  }
+
+  a:hover {
+    color: var(--color-smoke);
+    border-bottom-color: var(--color-smoke);
+  }
+
+  button {
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-beacon);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/chillbase-design-system-the-original-1-2-3e5f216e-d8a2-41f3-9e66-319de20a63fe/assets/tokens.css">
+<link rel="stylesheet" href="_ds/chillbase-design-system-the-original-1-2-3e5f216e-d8a2-41f3-9e66-319de20a63fe/colors_and_type.css">
+<link rel="stylesheet" href="_ds/chillbase-design-system-the-original-1-2-3e5f216e-d8a2-41f3-9e66-319de20a63fe/styles.css">
+<script src="_ds/chillbase-design-system-the-original-1-2-3e5f216e-d8a2-41f3-9e66-319de20a63fe/_ds_bundle.js"></script>
+<style>
+html, body { margin:0; padding:0; background:#121212; }
+body { overflow-x:hidden; }
+* { box-sizing:border-box; }
+a { color:#8cc3f2; text-decoration:none; border-bottom:1px solid rgba(140,195,242,.35); }
+a:hover { color:#f4f5f0; border-bottom-color:#f4f5f0; }
+button { font-family:'Onest', system-ui, sans-serif; }
+:focus-visible { outline:2px solid #8cc3f2; outline-offset:3px; }
+:root { --detail-cols:1fr; --plate-w:clamp(140px, 40vw, 200px); }
+@media (min-width:761px) { :root { --plate-w:clamp(170px, 17vw, 244px); } }
+@media (min-width:860px) { :root { --detail-cols:0.9fr 1fr; } }
+@media (min-width:900px) { :root { --m5-cols:1.25fr .85fr; --m5-tracks:4; --m5-w:62%; } }
+@media (max-width:899px) { [data-col="2"], [data-col="3"] { display:none; } }
+@keyframes wl-rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+@keyframes wl-cue { 0%,100% { transform:translateY(0); opacity:.5; } 50% { transform:translateY(7px); opacity:1; } }
+@media (prefers-reduced-motion: reduce) { * { animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+</style>
+</helmet>
+
+<div style="background:#121212; color:#f4f5f0; font-family:'Onest', system-ui, sans-serif; position:relative">
+
+  <sc-if value="{{ introVisible }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; z-index:90; background:#0c0f13; display:flex; align-items:center; justify-content:center; transition:opacity 700ms cubic-bezier(.2,.8,.2,1), transform 700ms cubic-bezier(.2,.8,.2,1)" ref="{{ introRef }}">
+      <canvas ref="{{ introCanvasRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+      <h1 style="position:relative; margin:0; padding:0 24px; text-align:center; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:.94; font-size:clamp(52px, 11vw, 168px); color:#f4f5f0; text-shadow:0 0 40px rgba(12,15,19,.9)">Смотри,<br>что я хочу</h1>
+      <button onClick="{{ skipIntro }}" style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); background:#121212; color:#f4f5f0; border:1px solid #2f2f2f; border-radius:999px; padding:12px 26px; font-size:15px; font-weight:500; cursor:pointer; letter-spacing:.01em">Пропустить вступление</button>
+    </div>
+  </sc-if>
+
+  <header style="position:relative; min-height:100svh; display:grid; grid-template-rows:1fr auto; overflow:hidden" ref="{{ heroRef }}">
+    <canvas ref="{{ heroCanvasRef }}" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 120%, rgba(43,95,143,.35), rgba(18,18,18,0) 60%)"></div>
+
+    <div style="position:relative; display:flex; align-items:flex-end; padding:clamp(24px,5vw,72px); padding-bottom:0">
+      <div style="max-width:920px; animation:wl-rise 800ms cubic-bezier(.2,.8,.2,1) both">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:clamp(16px,3vw,28px)">
+          <span style="width:8px; height:8px; border-radius:999px; background:#ff0000; box-shadow:0 0 12px rgba(255,0,0,.8)"></span>
+          <span style="font-size:14px; color:#bfbfbf; letter-spacing:.01em">Список живой, я его правлю</span>
+        </div>
+        <h1 style="margin:0; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:.92; font-size:clamp(46px, 9.5vw, 148px); color:#f4f5f0">Хочу<br>вот это</h1>
+      </div>
+    </div>
+
+    <div style="position:relative; padding:clamp(24px,5vw,72px); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px">
+      <p style="margin:0; max-width:46ch; font-size:clamp(16px,1.5vw,19px); line-height:1.55; color:#f4f5f0; background:#121212; border:1px solid #2f2f2f; border-radius:8px; padding:20px 22px; text-wrap:pretty">Десять вещей, до которых я реально дотягиваюсь мыслями. Дальше они висят в кольце — крутится от скролла, и первым встречает то, что хочу сильнее всего. Нажми на любую, чтобы рассмотреть.</p>
+      <div style="display:flex; align-items:center; gap:12px; color:#bfbfbf; font-size:14px">
+        <span>Листай вниз</span>
+        <span aria-hidden="true" style="display:inline-block; animation:wl-cue 2.2s cubic-bezier(.2,.8,.2,1) infinite">↓</span>
+      </div>
+    </div>
+  </header>
+
+  <section aria-label="Главное желание — BMW M5 F90" data-m5-wrap="1" style="position:relative; height:300vh; border-top:1px solid #242424">
+    <div style="position:sticky; top:0; height:100svh; overflow:hidden; background:#121212; display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:clamp(14px,2vw,26px); padding:clamp(18px,3.5vw,44px) clamp(20px,5vw,72px) clamp(20px,4vw,52px)">
+
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+        <div style="display:flex; align-items:center; gap:10px">
+          <span style="width:8px; height:8px; border-radius:999px; background:#8cc3f2; box-shadow:0 0 14px rgba(140,195,242,.8)"></span>
+          <span style="font-size:14px; color:#f4f5f0">Вне конкурса</span>
+        </div>
+        <span style="font-size:14px; color:#737373">BMW M5 · F90</span>
+      </div>
+
+      <div style="position:relative; overflow:hidden; border:1px solid #2f2f2f; border-radius:8px; background:#0e1116">
+        <div style="position:absolute; inset:0; perspective:1000px; perspective-origin:50% 18%">
+          <div data-m5-grid="1" style="position:absolute; top:-90%; bottom:-90%; left:50%; width:var(--m5-w, 86%); margin-left:calc(var(--m5-w, 86%) / -2); display:grid; grid-template-columns:repeat(var(--m5-tracks, 2), 1fr); gap:clamp(8px,1vw,16px); transform-style:preserve-3d; will-change:transform">
+            <sc-for list="{{ m5Cols }}" as="col" hint-placeholder-count="4">
+              <div data-col="{{ col.i }}" style="display:flex; flex-direction:column; gap:clamp(8px,1vw,16px); will-change:transform">
+                <sc-for list="{{ col.tiles }}" as="tile" hint-placeholder-count="9">
+                  <img src="{{ tile.src }}" alt="{{ tile.alt }}" loading="lazy" style="width:100%; height:auto; aspect-ratio:4 / 5; object-fit:cover; border-radius:8px; border:1px solid #2f2f2f; display:block">
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, rgba(14,17,22,0) 38%, rgba(14,17,22,.78) 100%)"></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:var(--m5-cols, 1fr); gap:clamp(16px,3vw,44px); align-items:end">
+        <div>
+          <h2 style="margin:0 0 14px; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:.92; font-size:clamp(34px,5.4vw,84px); color:#f4f5f0">Хочу такую повозку</h2>
+          <p style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.55; color:#bfbfbf; text-wrap:pretty">BMW M5 в кузове F90. Скидываться можно вдесятером, я не гордый — место у подъезда присмотрел, имя ей тоже придумал.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start">
+          <p style="margin:0; font-size:clamp(15px,1.3vw,17px); line-height:1.55; color:#f4f5f0; text-wrap:pretty">Но если вы вдруг хотите повременить с подарком, то вот тут есть ещё пожелания.</p>
+          <a href="#ring" style="background:#f4f5f0; color:#121212; border-bottom:0; border-radius:8px; padding:13px 24px; font-size:15px; font-weight:600; transition:opacity 200ms cubic-bezier(.2,.8,.2,1)" style-hover="opacity:.82; color:#121212">Открыть кольцо желаний</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ring" aria-label="Кольцо желаний" style="position:relative; height:520vh" ref="{{ ringWrapRef }}">
+    <div style="position:sticky; top:0; height:100svh; overflow:hidden; display:grid; grid-template-rows:auto 1fr auto">
+
+      <div style="position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:clamp(16px,3vw,28px) clamp(20px,5vw,72px)">
+        <span style="font-family:'Oswald', Impact, sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.12em; font-size:clamp(13px,1.2vw,17px); color:#f4f5f0">Кольцо</span>
+        <div style="flex:1; max-width:420px; height:2px; background:#242424; position:relative">
+          <span ref="{{ progressRef }}" style="position:absolute; inset:0 auto 0 0; width:0%; background:#8cc3f2; display:block"></span>
+        </div>
+        <span ref="{{ counterRef }}" style="font-size:14px; color:#bfbfbf; min-width:6ch; text-align:right">01 / 10</span>
+      </div>
+
+      <div ref="{{ ringViewRef }}" tabindex="0" role="listbox" aria-label="Вещи в кольце, стрелками влево-вправо" onKeyDown="{{ onRingKey }}" style="position:relative; perspective:1400px; perspective-origin:50% 45%">
+        <div ref="{{ ringRef }}" style="position:absolute; left:50%; top:48%; width:0; height:0; transform-style:preserve-3d">
+          <sc-for list="{{ lots }}" as="lot" hint-placeholder-count="10">
+            <button type="button" role="option" ref="{{ plateRef }}" data-idx="{{ $index }}" onClick="{{ openLot }}" onFocus="{{ focusLot }}" style="position:absolute; left:0; top:0; padding:0; border:0; background:none; cursor:pointer; transform-style:preserve-3d; will-change:transform, opacity">
+              <span style="position:relative; display:block; width:var(--plate-w); aspect-ratio:4 / 5; margin-left:calc(var(--plate-w) / -2); margin-top:calc(var(--plate-w) * -0.625); overflow:hidden; border:1px solid #2f2f2f; border-radius:8px; background:#171b21">
+                <img src="{{ lot.image }}" alt="{{ lot.alt }}" loading="lazy" width="800" height="1000" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:{{ lot.pos }}; transition:filter 400ms cubic-bezier(.2,.8,.2,1)" ref="{{ imgRef }}">
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="position:relative; z-index:3; padding:clamp(20px,4vw,44px) clamp(20px,5vw,72px) clamp(24px,5vw,56px)">
+        <div style="display:inline-block; max-width:min(100%, 620px); background:#121212; border:1px solid #2f2f2f; border-radius:8px; padding:clamp(16px,2.5vw,26px) clamp(18px,3vw,30px)">
+          <h2 ref="{{ frontTitleRef }}" style="margin:0 0 8px; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:1.04; font-size:clamp(26px,4vw,52px); color:#f4f5f0">Fujifilm X100VI</h2>
+          <p ref="{{ frontSubRef }}" style="margin:0 0 14px; font-size:clamp(14px,1.3vw,17px); color:#bfbfbf">Камера · ориентир 165 000 ₽</p>
+          <button type="button" onClick="{{ openFront }}" style="background:#f4f5f0; color:#121212; border:0; border-radius:8px; padding:13px 24px; font-size:15px; font-weight:600; cursor:pointer; transition:opacity 200ms cubic-bezier(.2,.8,.2,1)" style-hover="opacity:.82">Рассмотреть поближе</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="position:relative; padding:clamp(56px,10vw,140px) clamp(20px,5vw,72px); border-top:1px solid #242424">
+    <h2 style="margin:0 0 20px; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:1; font-size:clamp(30px,5vw,72px); color:#f4f5f0">Это всё кольцо</h2>
+    <p style="margin:0; max-width:52ch; font-size:clamp(16px,1.4vw,18px); line-height:1.55; color:#bfbfbf; text-wrap:pretty">Ничего не обязательно. Напиши мне про любую вещь — договоримся на месте. А если хочешь подарить что-то своё, тем интереснее.</p>
+  </footer>
+
+  <sc-if value="{{ active }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Подробнее о вещи" onClick="{{ onScrimClick }}" style="position:fixed; inset:0; z-index:80; background:rgba(8,10,13,.9); display:flex; align-items:center; justify-content:center; padding:clamp(12px,3vw,40px); animation:wl-rise 260ms cubic-bezier(.2,.8,.2,1) both">
+      <div data-panel="1" style="width:min(100%, 940px); max-height:100%; overflow:auto; background:#121212; border:1px solid #2f2f2f; border-radius:8px; display:grid; grid-template-columns:var(--detail-cols, 1fr)">
+        <div style="position:relative; min-height:220px; background:#171b21; border-right:1px solid #242424">
+          <img ref="{{ detailImgRef }}" alt="{{ active.alt }}" width="800" height="1000" style="width:100%; height:100%; max-height:520px; object-fit:cover; object-position:{{ active.pos }}; display:block; filter:{{ active.filter }}">
+        </div>
+        <div style="padding:clamp(22px,3vw,38px); display:flex; flex-direction:column; gap:16px">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+            <span style="font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:{{ active.tagColor }}">{{ active.tag }}</span>
+            <button type="button" onClick="{{ closeLot }}" aria-label="Закрыть" style="background:none; border:1px solid #2f2f2f; color:#f4f5f0; border-radius:999px; width:36px; height:36px; font-size:18px; line-height:1; cursor:pointer" ref="{{ closeRef }}">×</button>
+          </div>
+          <h2 style="margin:0; font-family:'Oswald', Impact, sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; line-height:1.04; font-size:clamp(28px,3.4vw,48px); color:#f4f5f0">{{ active.title }}</h2>
+          <p style="margin:0; font-size:17px; line-height:1.55; color:#f4f5f0; text-wrap:pretty">{{ active.note }}</p>
+          <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 18px; padding:14px 0; border-top:1px solid #242424; border-bottom:1px solid #242424">
+            <span style="font-family:'Oswald', Impact, sans-serif; font-size:26px; font-weight:600; letter-spacing:.02em; color:#f4f5f0">{{ active.priceText }}</span>
+            <span style="font-size:14px; color:#bfbfbf">ориентир, а не цена</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center">
+            <a href="{{ active.tgHref }}" target="_blank" rel="noopener" style="background:#f4f5f0; color:#121212; border:0; border-bottom:0; border-radius:8px; padding:14px 26px; font-size:15px; font-weight:600; cursor:pointer; transition:opacity 200ms cubic-bezier(.2,.8,.2,1)" style-hover="opacity:.82; color:#121212">{{ active.ctaLabel }}</a>
+            <sc-if value="{{ active.url }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ active.url }}" target="_blank" rel="noopener" style="font-size:15px; color:#8cc3f2">Посмотреть, что это</a>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tgUser&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;username&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Связь&quot;},&quot;showHeroWave&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Сцена&quot;},&quot;ringScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.7,&quot;max&quot;:1.3,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Сцена&quot;}}">
+const EASE = 'cubic-bezier(.2,.8,.2,1)';
+
+class Component extends DCLogic {
+  state = { lots: [], active: null, introVisible: false, introOut: false };
+
+  // ---- setup ------------------------------------------------------------
+  constructor(props) {
+    super(props);
+    this.plates = [];
+    this.imgs = [];
+    this.rot = 0;
+    this.rotTarget = 0;
+    this.front = 0;
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mobile = window.matchMedia('(max-width: 760px)').matches;
+    this.introRef = (el) => { this.introEl = el; };
+    this.introCanvasRef = (el) => { this.introCanvas = el; if (el) this.startIntro(); };
+    this.heroRef = (el) => { this.heroEl = el; };
+    this.heroCanvasRef = (el) => { this.heroCanvas = el; if (el) this.startHero(); };
+    this.m5Cols = [];
+    this.ringWrapRef = (el) => { this.ringWrap = el; };
+    this.ringViewRef = (el) => { this.ringView = el; };
+    this.ringRef = (el) => { this.ring = el; };
+    this.progressRef = (el) => { this.progressEl = el; };
+    this.counterRef = (el) => { this.counterEl = el; };
+    this.frontTitleRef = (el) => { this.frontTitleEl = el; };
+    this.frontSubRef = (el) => { this.frontSubEl = el; };
+    this.closeRef = (el) => { if (el) el.focus(); };
+    this.detailImgRef = (el) => {
+      const a = this.state.active;
+      if (el && a && a.image) el.src = a.image;
+    };
+    this.plateRef = (el) => { if (el) this.plates[+el.dataset.idx] = el; };
+    this.imgRef = (el) => { if (el) this.imgs.push(el); };
+  }
+
+  componentDidMount() {
+    const seen = (() => { try { return localStorage.getItem('wl-intro-seen') === '1'; } catch (e) { return true; } })();
+    if (!seen && !this.reduced) {
+      this.setState({ introVisible: true });
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      this.introTimer = setTimeout(() => this.skipIntro(), this.mobile ? 1500 : 2300);
+    }
+    fetch('lots.json')
+      .then((r) => r.json())
+      .then((raw) => {
+        const bad = raw.filter((l) => !l.image);
+        if (bad.length) console.warn('[lots.json] лоты без image — в кольце будут дырки:', bad.map((l) => l.id));
+        const lots = raw.slice().sort((a, b) => b.weight - a.weight);
+        this.setState({ lots }, () => this.layoutRing());
+      })
+      .catch((e) => console.warn('[lots.json] не загрузился:', e));
+
+    this.onResize = () => { this.mobile = window.matchMedia('(max-width: 760px)').matches; this.layoutRing(); };
+    window.addEventListener('resize', this.onResize);
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.active) this.closeLot(); };
+    window.addEventListener('keydown', this.onKey);
+    this.rafRing = requestAnimationFrame(() => this.loop());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.introTimer); clearTimeout(this.outTimer);
+    cancelAnimationFrame(this.rafRing);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    this.disposeIntro(); this.disposeHero();
+    document.documentElement.style.overflow = '';
+  }
+
+  // ---- intro: WebGL ripples --------------------------------------------
+  startIntro() {
+    const cv = this.introCanvas;
+    const gl = cv.getContext('webgl', { antialias: false, powerPreference: 'low-power' });
+    if (!gl) return;
+    this.igl = gl;
+    const vs = 'attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }';
+    const fs = [
+      'precision mediump float;',
+      'uniform vec2 u_res; uniform float u_t;',
+      'void main(){',
+      '  vec2 uv = (gl_FragCoord.xy - 0.5*u_res) / min(u_res.x,u_res.y);',
+      '  float d = length(uv);',
+      '  float w = 0.0;',
+      '  for(int i=0;i<4;i++){ float fi=float(i);',
+      '    w += sin(d*(24.0+fi*8.0) - u_t*(2.6+fi*0.7) + fi*1.7) / (1.0+fi); }',
+      '  w /= 2.1;',
+      '  float ring = smoothstep(0.12, 1.0, abs(w));',
+      '  float fall = exp(-d*1.45);',
+      '  vec3 base = mix(vec3(0.047,0.059,0.075), vec3(0.09,0.12,0.16), fall);',
+      '  vec3 beacon = vec3(0.353,0.655,0.918);',
+      '  vec3 col = base + beacon*ring*fall*0.85 + beacon*0.22*exp(-d*7.0);',
+      '  gl_FragColor = vec4(col,1.0);',
+      '}'
+    ].join('\n');
+    const sh = (t, src) => { const s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const vsh = sh(gl.VERTEX_SHADER, vs), fsh = sh(gl.FRAGMENT_SHADER, fs);
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vsh); gl.attachShader(prog, fsh); gl.linkProgram(prog); gl.useProgram(prog);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const uRes = gl.getUniformLocation(prog, 'u_res'), uT = gl.getUniformLocation(prog, 'u_t');
+    this.iparts = { prog, vsh, fsh, buf };
+    const t0 = performance.now();
+    const draw = () => {
+      if (!this.igl) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+      const w = Math.floor(cv.clientWidth * dpr), h = Math.floor(cv.clientHeight * dpr);
+      if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+      gl.viewport(0, 0, w, h);
+      gl.uniform2f(uRes, w, h);
+      gl.uniform1f(uT, (performance.now() - t0) / 1000);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      this.rafIntro = requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  disposeIntro() {
+    cancelAnimationFrame(this.rafIntro);
+    const gl = this.igl;
+    if (!gl) return;
+    const p = this.iparts || {};
+    if (p.prog) gl.deleteProgram(p.prog);
+    if (p.vsh) gl.deleteShader(p.vsh);
+    if (p.fsh) gl.deleteShader(p.fsh);
+    if (p.buf) gl.deleteBuffer(p.buf);
+    const lose = gl.getExtension('WEBGL_lose_context');
+    if (lose) lose.loseContext();
+    this.igl = null; this.iparts = null;
+  }
+
+  skipIntro = () => {
+    if (this.state.introOut) return;
+    clearTimeout(this.introTimer);
+    try { localStorage.setItem('wl-intro-seen', '1'); } catch (e) { /* ignore */ }
+    this.setState({ introOut: true });
+    if (this.introEl) { this.introEl.style.opacity = '0'; this.introEl.style.transform = 'scale(1.06)'; }
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    this.outTimer = setTimeout(() => {
+      this.disposeIntro();
+      this.setState({ introVisible: false, introOut: false });
+    }, 700);
+  };
+
+  // ---- hero: dotted surface --------------------------------------------
+  startHero() {
+    if (this.props.showHeroWave === false) return;
+    const cv = this.heroCanvas, ctx = cv.getContext('2d');
+    const step = this.mobile ? 34 : 24;
+    let t = 0, dpr = 1, cols = 0, rows = 0;
+    const size = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = cv.clientWidth * dpr; cv.height = cv.clientHeight * dpr;
+      cols = Math.ceil(cv.clientWidth / step) + 2; rows = Math.ceil(cv.clientHeight / step) + 2;
+    };
+    size();
+    this.heroResize = size;
+    window.addEventListener('resize', this.heroResize);
+    const frame = () => {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cv.clientWidth, cv.clientHeight);
+      const H = cv.clientHeight;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * step, y0 = r * step;
+          const wv = Math.sin(x * 0.011 + t) * 9 + Math.sin(y0 * 0.017 - t * 0.8) * 7;
+          const y = y0 + wv;
+          const depth = 1 - y0 / H;
+          const a = (0.10 + 0.32 * Math.max(0, depth)) * (0.55 + 0.45 * Math.sin(x * 0.011 + t));
+          if (a <= 0.02) continue;
+          ctx.fillStyle = 'rgba(140,195,242,' + a.toFixed(3) + ')';
+          const s = 1.1 + 1.5 * Math.max(0, depth);
+          ctx.beginPath(); ctx.arc(x, y, s, 0, 6.2832); ctx.fill();
+        }
+      }
+      if (this.reduced) return;
+      t += 0.016;
+      this.rafHero = requestAnimationFrame(frame);
+    };
+    frame();
+    if (!this.reduced) {
+      this.io = new IntersectionObserver((es) => {
+        const vis = es[0].isIntersecting;
+        if (vis && !this.rafHero) { this.rafHero = requestAnimationFrame(frame); }
+        if (!vis && this.rafHero) { cancelAnimationFrame(this.rafHero); this.rafHero = null; }
+      }, { threshold: 0.01 });
+      if (this.heroEl) this.io.observe(this.heroEl);
+    }
+  }
+
+  disposeHero() {
+    cancelAnimationFrame(this.rafHero); this.rafHero = null;
+    if (this.io) this.io.disconnect();
+    if (this.heroResize) window.removeEventListener('resize', this.heroResize);
+  }
+
+  // ---- ring -------------------------------------------------------------
+  layoutRing() {
+    const n = this.state.lots.length;
+    if (!n || !this.ring) return;
+    const scale = this.props.ringScale ?? 1;
+    const first = this.plates[0] && this.plates[0].firstElementChild;
+    const plateW = (first ? first.offsetWidth : 200) * scale;
+    if (scale !== 1) this.plates.forEach((el) => { if (el) el.style.setProperty('--plate-w', plateW + 'px'); });
+    this.radius = Math.round((plateW / 2) / Math.tan(Math.PI / n) * 1.42);
+    this.paint(true);
+  }
+
+  paintM5() {
+    if (!this.m5Grid || !this.m5Grid.isConnected || !this.m5Cols.length) {
+      this.m5Wrap = document.querySelector('[data-m5-wrap]');
+      this.m5Grid = document.querySelector('[data-m5-grid]');
+      this.m5Cols = Array.from(document.querySelectorAll('[data-col]'));
+    }
+    if (!this.m5Wrap || !this.m5Grid) return;
+    const r = this.m5Wrap.getBoundingClientRect();
+    const span = this.m5Wrap.offsetHeight - this.vh();
+    let p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+    if (this.reduced) p = 0.55;
+    const e = p * p * (3 - 2 * p);
+    const rx = 58 - 58 * e, s = 1.5 - 0.5 * e, tz = -120 + 120 * e;
+    this.m5Grid.style.transform =
+      'translate3d(0,0,' + tz.toFixed(1) + 'px) scale(' + s.toFixed(3) + ') rotateX(' + rx.toFixed(2) + 'deg)';
+    const n = this.m5Cols.length || 1;
+    for (let i = 0; i < n; i++) {
+      const el = this.m5Cols[i];
+      if (!el) continue;
+      const dir = i % 2 === 0 ? -1 : 1;
+      const stagger = (i - (n - 1) / 2) * 70;
+      el.style.transform = 'translate3d(0,' + (stagger + dir * (1 - e) * 320).toFixed(1) + 'px,0)';
+    }
+  }
+
+  loop() {
+    this.paintM5();
+    const n = this.state.lots.length;
+    if (n && this.ringWrap) {
+      const r = this.ringWrap.getBoundingClientRect();
+      const span = this.ringWrap.offsetHeight - this.vh();
+      const p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+      this.rotTarget = -p * 360 * (n - 1) / n;
+      this.rot = this.reduced ? this.rotTarget : this.rot + (this.rotTarget - this.rot) * 0.12;
+      if (Math.abs(this.rotTarget - this.rot) < 0.01) this.rot = this.rotTarget;
+      this.progress = p;
+      this.paint();
+    }
+    this.rafRing = requestAnimationFrame(() => this.loop());
+  }
+
+  paint(force) {
+    const lots = this.state.lots, n = lots.length;
+    if (!n || !this.ring) return;
+    const stepA = 360 / n;
+    const R = this.radius || 300;
+    for (let i = 0; i < n; i++) {
+      const el = this.plates[i];
+      if (!el) continue;
+      const a = i * stepA + this.rot;
+      const rad = a * Math.PI / 180;
+      const cos = Math.cos(rad);
+      const near = Math.max(0, cos);
+      el.style.transform = 'rotateY(' + a.toFixed(2) + 'deg) translateZ(' + R + 'px)';
+      el.style.opacity = (0.16 + 0.84 * Math.pow(near, 1.5)).toFixed(3);
+      el.style.zIndex = String(Math.round(near * 100));
+      el.style.pointerEvents = near > 0.55 ? 'auto' : 'none';
+      const lot = lots[i];
+      const glow = near > 0.8 ? (lot.weight * 12) * (near - 0.8) * 5 : 0;
+      const plate = el.firstElementChild;
+      if (plate) {
+        plate.style.boxShadow = glow > 0.5 ? '0 0 ' + glow.toFixed(0) + 'px rgba(140,195,242,' + (0.10 + lot.weight * 0.07).toFixed(2) + ')' : 'none';
+      }
+    }
+    const front = ((Math.round(-this.rot / stepA) % n) + n) % n;
+    if (front !== this.front || force) {
+      this.front = front;
+      const lot = lots[front];
+      if (this.frontTitleEl) this.frontTitleEl.textContent = lot.title;
+      if (this.frontSubEl) this.frontSubEl.textContent = lot.subtitle;
+      if (this.counterEl) this.counterEl.textContent = String(front + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
+      this.plates.forEach((el, i) => { if (el) el.setAttribute('aria-selected', i === front ? 'true' : 'false'); });
+    }
+    if (this.progressEl) this.progressEl.style.width = ((this.progress || 0) * 100).toFixed(1) + '%';
+  }
+
+  scroller() {
+    if (this._sc !== undefined) return this._sc;
+    let el = this.ringWrap;
+    while (el && el !== document.body) {
+      const cs = getComputedStyle(el);
+      if (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 4) { this._sc = el; return el; }
+      el = el.parentElement;
+    }
+    const b = document.body;
+    this._sc = (b.scrollHeight > b.clientHeight + 4 && /(auto|scroll)/.test(getComputedStyle(b).overflowY)) ? b : null;
+    return this._sc;
+  }
+
+  vh() { const s = this.scroller(); return s ? s.clientHeight : window.innerHeight; }
+
+  scrollToIndex(i) {
+    const n = this.state.lots.length;
+    if (!n || !this.ringWrap) return;
+    const p = i / (n - 1);
+    const span = this.ringWrap.offsetHeight - this.vh();
+    const cur = -this.ringWrap.getBoundingClientRect().top;
+    const delta = span * p - cur;
+    const opts = { top: delta, behavior: this.reduced ? 'auto' : 'smooth' };
+    const s = this.scroller();
+    if (s) s.scrollBy(opts); else window.scrollBy(opts);
+  }
+
+  onRingKey = (e) => {
+    const n = this.state.lots.length;
+    if (!n) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); this.scrollToIndex(Math.min(n - 1, this.front + 1)); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); this.scrollToIndex(Math.max(0, this.front - 1)); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.open(this.front); }
+  };
+
+  focusLot = (e) => {
+    const i = +e.currentTarget.dataset.idx;
+    if (i !== this.front) this.scrollToIndex(i);
+  };
+
+  // ---- detail -----------------------------------------------------------
+  open(i) {
+    const lot = this.state.lots[i];
+    if (!lot) return;
+    this.returnTo = this.plates[i] || null;
+    this.setState({ active: lot });
+  }
+  openLot = (e) => this.open(+e.currentTarget.dataset.idx);
+  openFront = () => this.open(this.front);
+  closeLot = () => {
+    this.setState({ active: null }, () => { if (this.returnTo) this.returnTo.focus({ preventScroll: true }); });
+  };
+  onScrimClick = (e) => { if (!e.target.closest('[data-panel]')) this.closeLot(); };
+
+  // ---- template values --------------------------------------------------
+  renderVals() {
+    if (this._loopVer !== 4) {
+      this._loopVer = 4;
+      cancelAnimationFrame(this.rafRing);
+      this.rafRing = requestAnimationFrame(() => this.loop());
+    }
+    const user = (this.props.tgUser || 'username').replace(/^@/, '');
+    const shots = [
+      ['01', 'BMW M5 F90, три четверти спереди'],
+      ['02', 'Серая M5 F90 у бетонной стены'],
+      ['03', 'Серебристая M5 F90 на фоне неба'],
+      ['04', 'Фара и решётка красной M5 F90'],
+      ['05', 'Матовая M5 F90 у боксов, вид сбоку'],
+      ['06', 'Задняя четверть матовой M5 F90'],
+      ['07', 'Красная M5 F90 в ночном салоне'],
+      ['08', 'Решётка M5 F90 крупным планом'],
+      ['09', 'M5 F90 спереди на светлой площадке'],
+      ['10', 'Чёрная M5 F90 в тени деревьев'],
+      ['11', 'M5 F90 в дождь, вид спереди'],
+      ['12', 'Ночная M5 F90 с горящими фарами']
+    ];
+    const m5Cols = [];
+    for (let c = 0; c < 4; c++) {
+      const tiles = [];
+      for (let t = 0; t < 8; t++) {
+        const s = shots[(c * 5 + t * 3) % shots.length];
+        tiles.push({ src: 'm5/' + s[0] + '.jpeg', alt: s[1] });
+      }
+      m5Cols.push({ i: c, tiles });
+    }
+    const lots = this.state.lots.map((l) => ({
+      ...l,
+      pos: l.imagePos || '50% 50%',
+      alt: l.title + ' — ' + l.subtitle
+    }));
+    const a = this.state.active;
+    const active = !a ? null : {
+      ...a,
+      pos: a.imagePos || '50% 50%',
+      alt: a.title + ' — ' + a.subtitle,
+      filter: 'none',
+      tag: a.subtitle.split(' · ')[0],
+      tagColor: '#8cc3f2',
+      priceText: a.price ? a.price.toLocaleString('ru-RU') + ' ₽' : 'Цена свободная',
+      ctaLabel: 'Написать, что беру',
+      tgHref: 'https://t.me/' + user + '?text=' + encodeURIComponent('Привет! Беру «' + a.title + '» из твоего вишлиста.')
+    };
+    return {
+      lots,
+      m5Cols,
+      active,
+      introVisible: this.state.introVisible,
+      introRef: this.introRef,
+      introCanvasRef: this.introCanvasRef,
+      heroRef: this.heroRef,
+      heroCanvasRef: this.heroCanvasRef,
+      ringWrapRef: this.ringWrapRef,
+      ringViewRef: this.ringViewRef,
+      ringRef: this.ringRef,
+      progressRef: this.progressRef,
+      counterRef: this.counterRef,
+      frontTitleRef: this.frontTitleRef,
+      frontSubRef: this.frontSubRef,
+      closeRef: this.closeRef,
+      detailImgRef: this.detailImgRef,
+      plateRef: this.plateRef,
+      imgRef: this.imgRef,
+      skipIntro: this.skipIntro,
+      openLot: this.openLot,
+      openFront: this.openFront,
+      closeLot: this.closeLot,
+      focusLot: this.focusLot,
+      onRingKey: this.onRingKey,
+      onScrimClick: this.onScrimClick
+    };
+  }
+}
+</script>
+</body>
+</html>

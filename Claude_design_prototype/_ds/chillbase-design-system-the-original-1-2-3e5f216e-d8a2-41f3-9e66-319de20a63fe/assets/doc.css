@@ -1,0 +1,430 @@
+/* ============================================================
+   CHILLBASE • Document styles — DARK edition
+   Фоны-паттерны на весь A4, белый текст, обложка с пятном
+   ============================================================ */
+
+.cb-doc {
+  --doc-fg:     #f4f5f0;
+  --doc-muted:  rgba(244,245,240,.60);
+  --doc-line:   rgba(255,255,255,.14);
+  --doc-accent: #ff0000;
+
+  color: var(--doc-fg);
+  font-family: var(--font-text);
+  max-width: 210mm;
+  margin: 32px auto;
+  padding: 0;
+  box-shadow: 0 40px 90px rgba(0,0,0,.7);
+  background: #0a0a0a;
+}
+
+/* ---------- страница (обычная: клетка) ---------- */
+.cb-doc .page {
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 26mm 22mm 22mm;
+  box-sizing: border-box;
+  color: var(--doc-fg);
+  background: url('backgrounds/bg-doc-plain.png') center/100% 100% no-repeat, #0a0a0a;
+  page-break-after: always;
+  overflow: hidden;
+}
+.cb-doc .page:last-child { page-break-after: auto; }
+
+/* ---------- обложка и финальная страница (фон с пятном) ---------- */
+.cb-doc .page--splash {
+  background: url('backgrounds/bg-doc-splash.png') center/100% 100% no-repeat, #0a0a0a;
+}
+
+/* обложка: используем готовый фон-пятно из дизайн-системы */
+.cb-doc .cover {
+  background: url('backgrounds/bg-doc-splash.png') center/100% 100% no-repeat, #0a0a0a;
+}
+
+/* ---------- шапка / подвал ---------- */
+.cb-doc .page__header, .cb-doc .page__footer {
+  position: absolute; left: 22mm; right: 22mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display);
+  font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--doc-muted);
+  z-index: 3;
+}
+.cb-doc .page__header {
+  top: 12mm;
+  padding-bottom: 4mm;
+  border-bottom: 1px solid var(--doc-accent);
+}
+.cb-doc .page__footer {
+  bottom: 12mm;
+  padding-top: 4mm;
+  border-top: 1px solid var(--doc-line);
+}
+.cb-doc .page__header img { height: 14pt; filter: brightness(0) invert(1); }
+.cb-doc .page__footer .pg { font-family: var(--font-mono); letter-spacing: .05em; }
+
+/* ---------- обложка ---------- */
+.cb-doc .cover {
+  min-height: 297mm;
+  width: 210mm;
+  padding: 22mm 22mm;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+.cb-doc .cover__head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(244,245,240,.7);
+}
+.cb-doc .cover__head img { height: 18pt; filter: brightness(0) invert(1); }
+.cb-doc .cover__body {
+  align-self: end;
+  max-width: 95%;
+}
+.cb-doc .cover__type {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 10pt; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--doc-accent); margin-bottom: 10mm;
+}
+.cb-doc .cover__title {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 52pt; line-height: .92; letter-spacing: -.015em;
+  text-transform: uppercase; color: #fff;
+  margin: 0 0 6mm;
+  text-wrap: balance;
+}
+.cb-doc .cover__sub {
+  font-family: var(--font-text); font-size: 13pt; font-weight: 400;
+  color: rgba(244,245,240,.82); line-height: 1.4; max-width: 28em;
+}
+.cb-doc .cover__foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+  color: rgba(244,245,240,.55); text-transform: uppercase;
+}
+
+/* ---------- типографика ---------- */
+.cb-doc h1, .cb-doc .h1 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 34pt; line-height: .98; letter-spacing: -.01em;
+  text-transform: uppercase; margin: 0 0 10mm; color: #fff;
+  text-wrap: balance;
+}
+.cb-doc h2, .cb-doc .h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 20pt; line-height: 1.05; margin: 12mm 0 4mm; color: #fff;
+}
+.cb-doc h3, .cb-doc .h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 14pt; line-height: 1.2; margin: 8mm 0 3mm; color: #fff;
+  text-transform: uppercase; letter-spacing: .02em;
+}
+.cb-doc p, .cb-doc li {
+  font-size: 11pt; line-height: 1.6; color: var(--doc-fg);
+}
+.cb-doc .lead {
+  font-size: 13pt; line-height: 1.5; font-weight: 500;
+  color: #fff;
+  margin: 4mm 0 8mm;
+  padding-left: 5mm; border-left: 3px solid var(--doc-accent);
+}
+.cb-doc small, .cb-doc .small { font-size: 9pt; color: var(--doc-muted); }
+.cb-doc code, .cb-doc .mono { font-family: var(--font-mono); font-size: 10pt; color: #c3ff00; }
+
+.cb-doc a { color: var(--doc-accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* разрыв секций */
+.cb-doc .section-break {
+  border: 0; border-top: 1px solid var(--doc-accent);
+  margin: 8mm 0 5mm; padding-top: 3mm;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--doc-muted);
+}
+
+/* ---------- callout ---------- */
+.cb-doc .cb-callout {
+  display: grid; grid-template-columns: 2mm 1fr;
+  gap: 5mm; margin: 5mm 0; padding: 4mm 5mm 4mm 0;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 2mm;
+  backdrop-filter: blur(2px);
+}
+.cb-doc .cb-callout > div:first-child { background: var(--doc-accent); border-radius: 2px; }
+.cb-doc .cb-callout--important > div:first-child { background: var(--cb-red); }
+.cb-doc .cb-callout--insight   > div:first-child { background: var(--cb-lime); }
+.cb-doc .cb-callout--decision  > div:first-child { background: var(--cb-orange); }
+.cb-doc .cb-callout--note      > div:first-child { background: rgba(255,255,255,.4); }
+.cb-doc .cb-callout__label {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 9pt; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--doc-accent); margin-bottom: 1.5mm;
+}
+.cb-doc .cb-callout--important .cb-callout__label { color: var(--cb-red); }
+.cb-doc .cb-callout--insight   .cb-callout__label { color: var(--cb-lime); }
+.cb-doc .cb-callout--decision  .cb-callout__label { color: var(--cb-orange); }
+.cb-doc .cb-callout--note      .cb-callout__label { color: rgba(255,255,255,.4); }
+.cb-doc .cb-callout__body { font-size: 11pt; line-height: 1.55; color: var(--doc-fg); }
+
+/* ---------- KPI ---------- */
+.cb-doc .cb-kpi {
+  display: grid; grid-auto-columns: 1fr; grid-auto-flow: column;
+  gap: 0; margin: 6mm 0;
+  border-top: 2px solid var(--doc-accent);
+  border-bottom: 1px solid var(--doc-line);
+}
+.cb-doc .cb-kpi__cell {
+  padding: 5mm 4mm; border-right: 1px solid var(--doc-line);
+}
+.cb-doc .cb-kpi__cell:last-child { border-right: 0; }
+.cb-doc .cb-kpi__val {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 30pt; line-height: .9; letter-spacing: -.02em;
+  color: #fff;
+}
+.cb-doc .cb-kpi__val[data-c="red"]   { color: var(--cb-red); }
+.cb-doc .cb-kpi__val[data-c="lime"]  { color: var(--cb-lime); }
+.cb-doc .cb-kpi__val[data-c="orange"]{ color: var(--cb-orange); }
+.cb-doc .cb-kpi__lbl {
+  font-family: var(--font-display); font-size: 9pt;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--doc-muted); margin-top: 1.5mm;
+}
+
+/* ---------- таблица ---------- */
+.cb-doc table.cb-table, .cb-doc table {
+  width: 100%; border-collapse: collapse; margin: 4mm 0;
+  font-size: 10.5pt;
+}
+.cb-doc .cb-table th, .cb-doc table th {
+  text-align: left; padding: 3mm 3mm 2mm;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 9pt; text-transform: uppercase; letter-spacing: .1em;
+  color: #fff;
+  border-bottom: 2px solid var(--doc-accent);
+}
+.cb-doc .cb-table td, .cb-doc table td {
+  padding: 2.5mm 3mm; border-bottom: 1px solid var(--doc-line);
+  vertical-align: top; color: var(--doc-fg);
+}
+.cb-doc .cb-table td.num, .cb-doc .cb-table th.num {
+  text-align: right; font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+.cb-doc .cb-table tr.total td {
+  background: rgba(255,0,0,.12); font-weight: 600; color: #fff;
+  border-top: 1px solid var(--doc-accent); border-bottom: 0;
+}
+
+/* ---------- списки ---------- */
+.cb-doc ul, .cb-doc ol { padding-left: 6mm; margin: 3mm 0; }
+.cb-doc ul li, .cb-doc ol li { margin-bottom: 2mm; }
+.cb-doc ul li::marker { color: var(--doc-accent); }
+.cb-doc ol li::marker { color: var(--doc-accent); font-family: var(--font-mono); }
+
+/* ---------- auto-fit scaling (уменьшаем текст чтобы влезть в 1 страницу) ---------- */
+.cb-doc .page[data-fit="95"] { font-size: 95%; }
+.cb-doc .page[data-fit="90"] { font-size: 90%; }
+.cb-doc .page[data-fit="85"] { font-size: 85%; }
+.cb-doc .page[data-fit="95"] h1 { font-size: 30pt; margin-bottom: 8mm; }
+.cb-doc .page[data-fit="90"] h1 { font-size: 28pt; margin-bottom: 7mm; }
+.cb-doc .page[data-fit="85"] h1 { font-size: 26pt; margin-bottom: 6mm; }
+.cb-doc .page[data-fit="95"] h2 { font-size: 17pt; margin: 9mm 0 3mm; }
+.cb-doc .page[data-fit="90"] h2 { font-size: 16pt; margin: 7mm 0 3mm; }
+.cb-doc .page[data-fit="85"] h2 { font-size: 15pt; margin: 6mm 0 2mm; }
+.cb-doc .page[data-fit="95"] h3 { font-size: 12pt; margin: 6mm 0 2mm; }
+.cb-doc .page[data-fit="90"] h3 { font-size: 11.5pt; margin: 5mm 0 2mm; }
+.cb-doc .page[data-fit="85"] h3 { font-size: 11pt; margin: 5mm 0 2mm; }
+.cb-doc .page[data-fit="95"] p,
+.cb-doc .page[data-fit="95"] li { font-size: 10.5pt; line-height: 1.55; }
+.cb-doc .page[data-fit="90"] p,
+.cb-doc .page[data-fit="90"] li { font-size: 10pt; line-height: 1.5; }
+.cb-doc .page[data-fit="85"] p,
+.cb-doc .page[data-fit="85"] li { font-size: 9.5pt; line-height: 1.45; }
+.cb-doc .page[data-fit="95"] .lead,
+.cb-doc .page[data-fit="90"] .lead,
+.cb-doc .page[data-fit="85"] .lead { font-size: 12pt; margin: 3mm 0 6mm; }
+
+/* ---------- table of contents (компактный стиль) ---------- */
+.cb-doc .cb-toc {
+  margin: 4mm 0; display: grid; gap: 2mm;
+  border-top: 1px solid var(--doc-accent); padding-top: 4mm;
+}
+.cb-doc .cb-toc__item {
+  display: grid; grid-template-columns: 6mm 1fr auto;
+  gap: 4mm; align-items: baseline;
+  font-size: 11pt; line-height: 1.4;
+  padding: 1.5mm 0; border-bottom: 1px dotted var(--doc-line);
+}
+.cb-doc .cb-toc__num {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--doc-accent); letter-spacing: .05em;
+}
+.cb-doc .cb-toc__title { color: var(--doc-fg); }
+.cb-doc .cb-toc__title.lvl-2 { padding-left: 6mm; color: var(--doc-muted); font-size: 10pt; }
+.cb-doc .cb-toc__page {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--doc-muted); letter-spacing: .05em;
+}
+.cb-doc .cb-toc__head {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 11pt; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--doc-muted); margin-bottom: 2mm;
+}
+
+/* ---------- figure (картинки/графики из docx) ---------- */
+.cb-doc .cb-figure {
+  margin: 5mm 0; padding: 4mm; border: 1px solid var(--doc-line);
+  border-radius: 2mm; background: rgba(255,255,255,.03);
+}
+.cb-doc .cb-figure img {
+  display: block; width: 100%; height: auto; max-height: 150mm;
+  object-fit: contain; border-radius: 1mm;
+}
+.cb-doc .cb-figure figcaption {
+  font-family: var(--font-mono); font-size: 9pt; color: var(--doc-muted);
+  margin-top: 2mm; letter-spacing: .04em;
+}
+
+/* ---------- signature (контракты) ---------- */
+.cb-doc .cb-signature {
+  margin: 12mm 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm;
+}
+.cb-doc .cb-signature__line {
+  border-top: 1px solid var(--doc-fg);
+  padding-top: 2mm;
+  font-size: 9pt; color: var(--doc-muted);
+  text-transform: uppercase; letter-spacing: .1em;
+  font-family: var(--font-display);
+}
+
+/* ---------- финальная страница "конец" ---------- */
+.cb-doc .finale {
+  position: absolute; inset: 0;
+  display: grid; place-items: center; text-align: center;
+  padding: 22mm;
+}
+.cb-doc .finale__big {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 60pt; line-height: .9; color: #fff;
+  letter-spacing: -.02em; text-transform: uppercase;
+  text-shadow: 0 4px 40px rgba(0,0,0,.5);
+}
+.cb-doc .finale__sub {
+  font-family: var(--font-text); font-size: 14pt;
+  color: rgba(244,245,240,.85); margin-top: 8mm;
+  max-width: 30em;
+}
+.cb-doc .finale__cta {
+  margin-top: 14mm; font-family: var(--font-mono);
+  font-size: 11pt; color: var(--doc-accent);
+  letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ---------- chart ---------- */
+.cb-doc .cb-chart {
+  margin: 4mm 0 6mm;
+  page-break-inside: avoid;
+}
+.cb-doc .cb-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* исходная картинка-чарт с hint */
+.cb-doc .cb-figure--chart-src {
+  position: relative;
+  cursor: pointer;
+  border: 1px dashed var(--doc-line);
+  padding: 4mm;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+.cb-doc .cb-figure--chart-src:hover {
+  border-color: var(--doc-accent);
+  background: rgba(200,48,26,0.04);
+}
+.cb-doc .cb-figure__hint {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: var(--doc-accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.cb-doc .cb-figure--chart-src:hover .cb-figure__hint { opacity: 1; }
+
+/* ---------- print ---------- */
+@media print {
+  .cb-doc { margin: 0; box-shadow: none; max-width: none; }
+  .cb-doc .page, .cb-doc .cover { page-break-after: always; }
+  .cb-doc .page:last-child { page-break-after: auto; }
+  @page { size: A4; margin: 0; }
+  body { background: white !important; }
+}
+
+
+/* ============================================================
+   IMAGE tools overlay (удаление фона)
+   ============================================================ */
+.cb-doc .cb-figure { position: relative; }
+.cb-doc .cb-figure__tools {
+  position: absolute; top: 6px; right: 6px;
+  display: flex; gap: 4px;
+  opacity: 0; transition: opacity .15s;
+  z-index: 5;
+}
+.cb-doc .cb-figure:hover .cb-figure__tools { opacity: 1; }
+.cb-doc .cb-figure__tools button {
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.cb-doc .cb-figure__tools button:hover {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+.cb-doc .cb-figure--processing { position: relative; }
+.cb-doc .cb-figure--processing::after {
+  content: 'обработка…';
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.8);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  z-index: 10;
+}
+.cb-doc .cb-figure--bg-removed img {
+  background:
+    linear-gradient(45deg, rgba(255,255,255,.04) 25%, transparent 25%) 0 0/12px 12px,
+    linear-gradient(-45deg, rgba(255,255,255,.04) 25%, transparent 25%) 0 0/12px 12px,
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,.04) 75%) 0 0/12px 12px,
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.04) 75%) 0 0/12px 12px;
+}
+
+/* скрываем toolbar при печати/PDF */
+@media print {
+  .cb-doc .cb-figure__tools { display: none !important; }
+}
